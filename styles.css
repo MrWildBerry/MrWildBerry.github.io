@@ -131,15 +131,22 @@ h6 {
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+.header-container {
+  display: flex;
+  justify-content: center;
+}
+
 .header {
-  transition: all 0.5s;
   z-index: 997;
   padding: 30px 0;
   background-color: #000;
+  display: flex;
+  align-items: center;
 }
 
 .header .logo {
-  transition: 0.3s;
+  display: flex;
+  align-items: center;
 }
 
 .header .logo img {
@@ -153,22 +160,6 @@ h6 {
   font-weight: 400;
   color: #fff;
   font-family: var(--font-secondary);
-}
-
-.header .logo i {
-  font-size: 32px;
-  margin-right: 8px;
-  line-height: 0;
-}
-
-@media (max-width: 575px) {
-  .header .logo h1 {
-    font-size: 26px;
-  }
-
-  .header .logo i {
-    font-size: 24px;
-  }
 }
 
 /*--------------------------------------------------------------
@@ -414,6 +405,7 @@ h6 {
 --------------------------------------------------------------*/
 .resume {
   padding: 80px 0;
+  page-break-inside: avoid; /* Avoid breaking the section across pages */
 }
 
 .resume .container {
@@ -426,14 +418,15 @@ h6 {
 
 .resume .col-lg-6 {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  text-align: center;
+  text-align: left;
+  page-break-inside: avoid; /* Avoid breaking the column across pages */
 }
 
 .resume .resume-content {
-  max-width: 50px; /* Adjust the max-width based on your design */
-  text-align: left; /* Align the text content to the left */
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .resume h2 {
@@ -442,21 +435,16 @@ h6 {
   color: var(--color-primary);
 }
 
-.resume ul {
-  list-style: none;
-  padding: 0;
-}
-
-.resume li {
-  margin-bottom: 20px;
+.resume p {
+  margin-bottom: 15px;
 }
 
 .resume strong {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .resume span {
-  display: block; /* Ensure each item spans the full width */
+  display: block;
 }
 
 .resume img {
@@ -466,6 +454,22 @@ h6 {
   object-fit: cover;
   margin-right: 20px;
 }
+
+/* Print Styles */
+@media print {
+  body {
+    color: #000; /* Set text color to black for better print readability */
+  }
+
+  .resume img {
+    max-width: 30%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain; /* Ensure images fit within the printed page */
+    margin-right: 0;
+  }
+}
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -533,6 +537,14 @@ h6 {
   .hero h2 {
     font-size: 32px;
   }
+}
+
+/*--------------------------------------------------------------
+# Logo
+--------------------------------------------------------------*/
+.logo {
+  max-width: 100px; /* Adjust the size as needed */
+  height: auto;
 }
 
 /*--------------------------------------------------------------
